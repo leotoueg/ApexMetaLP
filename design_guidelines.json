@@ -1,0 +1,72 @@
+{
+  "theme": "light",
+  "archetype": "4 (Swiss & High-Contrast)",
+  "typography": {
+    "heading_font": "Outfit",
+    "body_font": "Manrope",
+    "scale": {
+      "h1": "text-3xl md:text-4xl tracking-tight font-bold text-[#003A75]",
+      "h2": "text-2xl md:text-3xl tracking-tight font-semibold text-slate-900",
+      "h3": "text-xl font-medium text-slate-900",
+      "body": "text-base leading-relaxed text-slate-600",
+      "small": "text-sm text-slate-500 uppercase tracking-wider"
+    }
+  },
+  "colors": {
+    "brand_blue": "#003A75",
+    "brand_orange": "#FF6C00",
+    "background": "#F8FAFC",
+    "surface": "#FFFFFF",
+    "text_main": "#0F172A",
+    "text_muted": "#64748B",
+    "border": "#E2E8F0"
+  },
+  "layout": {
+    "strategy": "Split-Screen Asymmetry",
+    "description": "Left column (hidden on small mobile, or acting as a small header) contains a full-bleed luxury bathroom photo with a dark gradient overlay and the logo. Right column takes up 50-60% width and houses a centered, distraction-free white card for the quiz.",
+    "spacing": "p-8 md:p-12 inside the quiz container. gap-6 between elements.",
+    "border_radius": "rounded-lg"
+  },
+  "components": {
+    "quiz_container": "bg-white shadow-2xl shadow-slate-200/50 border border-slate-100 rounded-xl overflow-hidden relative w-full max-w-xl mx-auto",
+    "progress_bar": "absolute top-0 left-0 h-1.5 bg-[#FF6C00] transition-all duration-500 ease-out",
+    "step_cards": "grid grid-cols-1 sm:grid-cols-2 gap-4",
+    "selection_card": "flex flex-col items-center justify-center p-6 border-2 border-slate-100 rounded-lg cursor-pointer hover:border-[#003A75]/30 hover:bg-slate-50 transition-all data-[state=active]:border-[#003A75] data-[state=active]:bg-[#003A75]/5 text-center gap-3",
+    "selection_row": "w-full flex items-center p-5 border-2 border-slate-100 rounded-lg cursor-pointer hover:border-[#003A75]/30 hover:bg-slate-50 transition-all data-[state=active]:border-[#003A75] data-[state=active]:bg-[#003A75]/5 text-left text-lg font-medium text-slate-700",
+    "button_primary": "w-full h-14 bg-[#FF6C00] hover:bg-[#E56000] text-white rounded-lg font-bold text-lg transition-colors shadow-lg shadow-[#FF6C00]/20 flex items-center justify-center",
+    "button_secondary": "text-slate-500 hover:text-slate-900 font-medium px-4",
+    "input_field": "h-12 rounded-lg border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-[#003A75]/20 focus:border-[#003A75] transition-all"
+  },
+  "media": {
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1750036015902-c6f5ebca924e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzB8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBsdXh1cnklMjBiYXRocm9vbSUyMGludGVyaW9yfGVufDB8fHx8MTc3NDk5MTMyM3ww&ixlib=rb-4.1.0&q=85",
+        "category": "hero_background",
+        "description": "Elegant modern bathroom. Use as the left-side cover image."
+      },
+      {
+        "url": "https://customer-assets.emergentagent.com/job_home-assessment-2/artifacts/7uksam1h_Untitled%20design%20%2862%29.png",
+        "category": "logo",
+        "description": "Apex Bath Remodeling & Pros Logo"
+      }
+    ]
+  },
+  "user_flow": {
+    "steps": [
+      "Step 1: Home Type -> grid of 4 cards with icons (Home, Building, Caravan/Trailer, Building2).",
+      "Step 2: Timeline -> 4 vertical rows (ASAP, This Month, Next Month, Unsure).",
+      "Step 3: Address -> Standard form inputs: Home Address, City, Zipcode.",
+      "Step 4: Contact Info -> Full Name, Phone, Email. Submit button triggers webhook.",
+      "Step 5: Booking -> Shadcn Calendar (max 5 days out) + Time Slots (10am, 2pm, 6pm) -> Confirmation message."
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Extend tailwind.config.js with colors: brand-blue: '#003A75', brand-orange: '#FF6C00'.",
+    "Install Google Fonts 'Outfit' (headings) and 'Manrope' (body) via index.css.",
+    "Use Shadcn Form, Input, Button, and Calendar components.",
+    "Build a responsive split layout: md:grid md:grid-cols-2 min-h-screen. Left is the image + logo + phone number overlay. Right is a flex-center container for the quiz card.",
+    "Quiz card MUST have a top progress bar mapping to the 5 steps.",
+    "Ensure the Calendar allows selecting dates from today up to 5 days in the future. No excluded days.",
+    "Include data-testid attributes on all buttons, inputs, and selectable cards."
+  ]
+}
