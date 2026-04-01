@@ -412,14 +412,43 @@ const LandingPage = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/90 to-brand-blue/70" />
         <div className="absolute inset-0 flex flex-col justify-end p-8 lg:p-12">
-          <div className="space-y-4">
+          <div className="space-y-6">
+            {/* Special Offer Badge */}
+            <div className="inline-block bg-brand-orange text-white px-4 py-2 rounded-lg font-bold text-lg shadow-lg">
+              $2,500 OFF Any Project Until End of Spring!
+            </div>
+            
             <h1 className="text-3xl lg:text-4xl font-bold text-white leading-tight">
-              Transform Your Bathroom Into a<br />
-              <span className="text-brand-orange">Stunning Retreat</span>
+              Full Bathroom Remodels in<br />
+              <span className="text-brand-orange">North Central Texas & Surrounding Areas</span>
             </h1>
             <p className="text-white/80 text-lg max-w-md">
               Over 50 years of combined experience delivering exceptional bathroom remodeling services.
             </p>
+            
+            {/* Services List */}
+            <div className="space-y-2">
+              <p className="text-white/60 text-sm uppercase tracking-wider font-medium">Services:</p>
+              <ul className="space-y-1 text-white/90">
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
+                  Full Bathroom Remodels
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
+                  Tub to Shower Conversion
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
+                  Shower to Tub Conversion
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
+                  Walk-in Tub
+                </li>
+              </ul>
+            </div>
+            
             <div className="flex items-center gap-3 text-white">
               <Phone className="w-5 h-5" />
               <a href={`tel:+18175069696`} className="text-lg font-medium hover:text-brand-orange transition-colors">
@@ -540,6 +569,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/spring" element={<LandingPage />} />
         </Routes>
       </BrowserRouter>
     </div>
