@@ -71,6 +71,9 @@ class AppointmentBooking(BaseModel):
     full_name: str
     phone: str
     email: str
+    address: str = ""
+    city: str = ""
+    zipcode: str = ""
     timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class AppointmentBookingCreate(BaseModel):
@@ -80,6 +83,9 @@ class AppointmentBookingCreate(BaseModel):
     full_name: str
     phone: str
     email: EmailStr
+    address: str = ""
+    city: str = ""
+    zipcode: str = ""
 
 # API Routes
 @api_router.get("/")

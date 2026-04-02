@@ -152,6 +152,9 @@ const LandingPage = () => {
         full_name: formData.fullName,
         phone: formData.phone,
         email: formData.email,
+        address: formData.address,
+        city: formData.city,
+        zipcode: formData.zipcode,
       });
       // Push appointment_requested event to dataLayer
       pushToDataLayer('appointment_requested', {
