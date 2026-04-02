@@ -102,13 +102,14 @@ async def submit_quiz(submission: QuizSubmissionCreate):
     doc['timestamp'] = doc['timestamp'].isoformat()
     
     # Store in MongoDB
-    await db.quiz_submissions.insert_one(doc)
+    await db.quiz_submissions.insert_one(doc.copy())
     
-    # Send to webhook if configured
+    # Send to webhook if configured (exclude any MongoDB _id)
     if QUIZ_WEBHOOK_URL:
         try:
-            async with httpx.AsyncClient() as client:
-                await client.post(QUIZ_WEBHOOK_URL, json=doc, timeout=10.0)
+            webhook_payload = {k: v for k, v in doc.items() if k != '_id'}
+            async with httpx.AsyncClient() as http_client:
+                await http_client.post(QUIZ_WEBHOOK_URL, json=webhook_payload, timeout=10.0)
                 logger.info(f"Quiz webhook sent successfully for {quiz_obj.id}")
         except Exception as e:
             logger.error(f"Failed to send quiz webhook: {e}")
@@ -125,13 +126,14 @@ async def book_appointment(booking: AppointmentBookingCreate):
     doc['timestamp'] = doc['timestamp'].isoformat()
     
     # Store in MongoDB
-    await db.appointments.insert_one(doc)
+    await db.appointments.insert_one(doc.copy())
     
-    # Send to webhook if configured
+    # Send to webhook if configured (exclude any MongoDB _id)
     if APPOINTMENT_WEBHOOK_URL:
         try:
-            async with httpx.AsyncClient() as client:
-                await client.post(APPOINTMENT_WEBHOOK_URL, json=doc, timeout=10.0)
+            webhook_payload = {k: v for k, v in doc.items() if k != '_id'}
+            async with httpx.AsyncClient() as http_client:
+                await http_client.post(APPOINTMENT_WEBHOOK_URL, json=webhook_payload, timeout=10.0)
                 logger.info(f"Appointment webhook sent successfully for {appointment_obj.id}")
         except Exception as e:
             logger.error(f"Failed to send appointment webhook: {e}")
